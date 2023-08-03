@@ -1,0 +1,94 @@
+{
+	"id": "1f0c754a-2532-454b-add3-52edfff76c0c",
+	"name": "Coplana DEV",
+	"values": [
+		{
+			"key": "serviceLayer",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyDB",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "pass",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "parsedData",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "domain",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "client_id",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "client_secret",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "authorization",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "telegramBotToken",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		}
+		,
+		{
+			"key": "telegramChatId",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-08-03T18:59:55.236Z",
+	"_postman_exported_using": "Postman/10.16.5"
+}

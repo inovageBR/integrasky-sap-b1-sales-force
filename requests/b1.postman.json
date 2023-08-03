@@ -1,0 +1,853 @@
+{
+	"info": {
+		"_postman_id": "f844513f-b5f2-4e0b-adea-fed0619333ff",
+		"name": "B1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "229177",
+		"_collection_link": "https://makarioszen.postman.co/workspace/Coplana~8878fbbe-541b-4f96-a93c-148e14399e55/collection/229177-f844513f-b5f2-4e0b-adea-fed0619333ff?action=share&creator=229177&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "INO_MDIC",
+					"item": [
+						{
+							"name": "UserTablesMD",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserTablesMD('INO_MDIC')",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserTablesMD('INO_MDIC')"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - UserTablesMD - INO_MDIC",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"TableName\": \"INO_MDIC\",\r\n    \"TableDescription\": \"INO Master Data Int Ctrl\",\r\n    \"TableType\": \"bott_NoObject\",\r\n    \"Archivable\": \"tNO\",\r\n    \"ArchiveDateField\": null,\r\n    \"DisplayMenu\": \"tNO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserTablesMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserTablesMD"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - UserTablesMD - INO_MDIC - TgtObj",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"TgtObj\",\r\n    \"Type\": \"db_Alpha\",\r\n    \"Size\": 250,\r\n    \"Description\": \"Target Object\",\r\n    \"SubType\": \"st_None\",\r\n    \"LinkedTable\": null,\r\n    \"DefaultValue\": null,\r\n    \"TableName\": \"@INO_MDIC\",\r\n    \"EditSize\": 250,\r\n    \"Mandatory\": \"tYES\",\r\n    \"LinkedUDO\": null,\r\n    \"LinkedSystemObject\": null,\r\n    \"ValidValuesMD\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserFieldsMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserFieldsMD"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 - UserTablesMD - INO_MDIC - SrcObt",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"SrcObj\",\r\n    \"Type\": \"db_Alpha\",\r\n    \"Size\": 250,\r\n    \"Description\": \"Source Object\",\r\n    \"SubType\": \"st_None\",\r\n    \"LinkedTable\": null,\r\n    \"DefaultValue\": null,\r\n    \"TableName\": \"@INO_MDIC\",\r\n    \"EditSize\": 250,\r\n    \"Mandatory\": \"tYES\",\r\n    \"LinkedUDO\": null,\r\n    \"LinkedSystemObject\": null,\r\n    \"ValidValuesMD\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserFieldsMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserFieldsMD"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 - UserTablesMD - INO_MDIC - Status",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"Status\",\r\n    \"Size\": 10,\r\n    \"Description\": \"Status\",\r\n    \"SubType\": null,\r\n    \"LinkedTable\": null,\r\n    \"DefaultValue\": \"S\",\r\n    \"TableName\": \"@INO_MDIC\",\r\n    \"EditSize\": 10,\r\n    \"Mandatory\": \"tYES\",\r\n    \"LinkedUDO\": null,\r\n    \"LinkedSystemObject\": null,\r\n    \"ValidValuesMD\": [\r\n        {\r\n            \"Value\": \"S\",\r\n            \"Description\": \"Success\"\r\n        },\r\n        {\r\n            \"Value\": \"E\",\r\n            \"Description\": \"Error\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserFieldsMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserFieldsMD"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4 - UserTablesMD - INO_MDIC - LastRun",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"LastRun\",\r\n    \"Type\": \"db_Alpha\",\r\n    \"Size\": 19,\r\n    \"Description\": \"Last Run\",\r\n    \"SubType\": \"st_None\",\r\n    \"LinkedTable\": null,\r\n    \"DefaultValue\": null,\r\n    \"TableName\": \"@INO_MDIC\",\r\n    \"EditSize\": 19,\r\n    \"Mandatory\": \"tYES\",\r\n    \"LinkedUDO\": null,\r\n    \"LinkedSystemObject\": null,\r\n    \"ValidValuesMD\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserFieldsMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserFieldsMD"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5 - UserTablesMD - INO_MDIC - Summary",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"Summary\",\r\n    \"Type\": \"db_Alpha\",\r\n    \"Size\": 254,\r\n    \"Description\": \"Summary\",\r\n    \"SubType\": \"st_None\",\r\n    \"LinkedTable\": null,\r\n    \"DefaultValue\": null,\r\n    \"TableName\": \"@INO_MDIC\",\r\n    \"EditSize\": 254,\r\n    \"Mandatory\": \"tNO\",\r\n    \"LinkedUDO\": null,\r\n    \"LinkedSystemObject\": null,\r\n    \"ValidValuesMD\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{serviceLayer}}/b1s/v2/UserFieldsMD",
+									"host": [
+										"{{serviceLayer}}"
+									],
+									"path": [
+										"b1s",
+										"v2",
+										"UserFieldsMD"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Test Setup",
+			"item": [
+				{
+					"name": "INO_MDIC",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const uuid = require('uuid');\r",
+									"const moment = require('moment');\r",
+									"\r",
+									"const id = `${uuid.v4()}`;\r",
+									"const formattedDate = moment().format('YYYY-MM-DD_HH:mm:ss');\r",
+									"const dataTmp = JSON.parse(pm.request.body)\r",
+									"dataTmp.Code = id;\r",
+									"dataTmp.Name = id\r",
+									"dataTmp.U_LastRun = formattedDate;\r",
+									"pm.request.body = JSON.stringify(dataTmp)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Code\": null,\r\n    \"Name\": null,\r\n    \"U_TgtObj\": \"Products\",\r\n    \"U_SrcObj\": \"OITM\",\r\n    \"U_Status\": \"S\",\r\n    \"U_LastRun\": null,\r\n    \"U_Summary\": \"Integração Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/U_INO_MDIC",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"U_INO_MDIC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INO_MDIC",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Prefer",
+								"value": "odata.maxpagesize=1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/U_INO_MDIC?$filter=U_SrcObj eq 'OITM' and U_Status eq 'S'&$orderby=U_LastRun desc",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"U_INO_MDIC"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "U_SrcObj eq 'OITM' and U_Status eq 'S'"
+								},
+								{
+									"key": "$orderby",
+									"value": "U_LastRun desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INO_MDIC",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Prefer",
+								"value": "odata.maxpagesize=1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/U_INO_MDIC('e167d385-dc45-421e-a858-aa99574697ed')",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"U_INO_MDIC('e167d385-dc45-421e-a858-aa99574697ed')"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "BusinessPartners (OCRD)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payments Terms (OCTG)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContactPersons (OCPR)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BusinessPlaces (OBPL)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Items (OITM)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SalesPerson (OSLP)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoices Installments (INV6)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceList (OPLN)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoices (OINV)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stock Full Calculation View (OITW_FULL)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stock BPL Calculation View (OITW_BPL)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agronomist (@K_AGRONOMOS)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FieldNotebook (@AGRV_UNPF5)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LocalCulture (@???_CULT)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Plots (@AGRV_UNPT)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serviceLayer}}/b1s/v2/Items?$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'",
+							"host": [
+								"{{serviceLayer}}"
+							],
+							"path": [
+								"b1s",
+								"v2",
+								"Items"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "ItemCode,ItemName,UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$orderby",
+									"value": "UpdateDate,UpdateTime"
+								},
+								{
+									"key": "$filter",
+									"value": "UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CompanyDB\": \"{{companyDB}}\",\r\n    \"UserName\": \"{{user}}\",\r\n    \"Password\": \"{{pass}}\",\r\n    \"Language\": 29\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serviceLayer}}/b1s/v2/Login",
+					"host": [
+						"{{serviceLayer}}"
+					],
+					"path": [
+						"b1s",
+						"v2",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

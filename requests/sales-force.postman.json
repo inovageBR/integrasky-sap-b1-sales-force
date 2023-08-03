@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "a7520595-f07f-4b5e-ab1d-2cf584832275",
+		"name": "SalesForce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "229177",
+		"_collection_link": "https://makarioszen.postman.co/workspace/Coplana~8878fbbe-541b-4f96-a93c-148e14399e55/collection/229177-a7520595-f07f-4b5e-ab1d-2cf584832275?action=share&creator=229177&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Product (OITM)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Name\": \"REQ TRADICIONAL PRATIC 1 5 K\",\r\n\t\"IsActive\": true,\r\n\t\"codigoProtheus__c\": \"0006195\",\r\n\t\"Segmento__c\": \"Refrigerados\",\r\n\t\"Categoria__c\": \"COPO\",\r\n\t\"Linha__c\": \"REQUEIJAO\",\r\n\t\"PesoBruto__c\": \"1.51\",\r\n\t\"PesoLiquido__c\": \"1.5\",\r\n\t\"ValidadeDias__c\": \"100\",\r\n\t\"QtdeUnidCxEmb__c\": \"12\",\r\n\t\"DUN__c\": \"17896353301204\",\r\n\t\"EAN__c\": \"7896353301207\",\r\n\t\"ClassifFiscalNCM__c\": \"04061090\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{domain}}.my.salesforce.com/services/data/v53.0/sobjects/Product2/",
+							"protocol": "https",
+							"host": [
+								"{{domain}}",
+								"my",
+								"salesforce",
+								"com"
+							],
+							"path": [
+								"services",
+								"data",
+								"v53.0",
+								"sobjects",
+								"Product2",
+								""
+							]
+						},
+						"description": "Para adicionar um novo produto, é preciso informar obrigatoriamente o campo Name. Outros campos que podem ser adicionados, mas não são obrigatórios, são:\n\n| **Label** | **API_NAME** | **Tipo** |\n| --- | --- | --- |\n| Ativo | IsActive | Boolean |\n| Categoria | Categoria__c | Lista de opções:  <br>  <br>Massas  <br>  <br>Pão de Queijo  <br>  <br>Pizza  <br>  <br>Salgados  <br>  <br>Copo  <br>  <br>Cream Cheese  <br>  <br>Culinário  <br>  <br>Original  <br>  <br>Original Food  <br>  <br>Pratic |\n| Código do produto | ProductCode | Texto(255 caracteres) |\n| Descrição do produto | Description | Área de texto(4000 caracteres) |\n| Família de produtos | Family | Lista de opções:  <br> |\n| ID externo | ExternalId | Texto(255 caracteres) |\n| Linha | Linha__c | Lista de opções:  <br>  <br> |\n| Nome do produto | Name | Texto (255 caracteres) |\n| Peso | Peso__c | Número |\n| Peso líquido | Peso_liquido__c | Número |\n| Qtde Unid. (cx emb) | Qtde_Unid_cx_emb__c | Número |\n| Segmento | Segmento__c | Lista de opções:  <br>  <br>Congelados  <br>  <br>Refrigerados |\n| SKU do produto | StockKeepingUnit | Texto(180 caracteres) |\n| URL de exibição | DisplayUrl | URL |\n| Validade (dias) | Validade_dias__c | Número |\n| Código Protheus | CodigoProtheus__c | Texto(255 caracteres) |\n\n**OBS: Ao enviar a requisição com o nome dos campos, sempre utilizar o API_NAME. Por exemplo CNPJ, deve ser enviado como CNPJ__c.**"
+					},
+					"response": []
+				},
+				{
+					"name": "BusinessPartners (OCRD)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\":\"Ricoy Supermercados\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{domain}}.my.salesforce.com/services/data/v53.0/sobjects/Account/",
+							"protocol": "https",
+							"host": [
+								"{{domain}}",
+								"my",
+								"salesforce",
+								"com"
+							],
+							"path": [
+								"services",
+								"data",
+								"v53.0",
+								"sobjects",
+								"Account",
+								""
+							]
+						},
+						"description": "Para adicionar um novo cliente, é preciso informar obrigatoriamente o campo Name. Outros campos que podem ser adicionados, mas não são obrigatórios, são:\n\n| **Label** | **API_NAME** | **TIPO** |\n| --- | --- | --- |\n| Agenda atendimento | Agenda_atendimento__c | Lista de opções:  <br>  <br>2000 - segunda-feira mensal  <br>  <br>2020 - segunda-feira quinzenal  <br>  <br>2323 - segunda e terca semanal  <br>  <br>2362 - segunda terca e sexta semanal  <br>  <br>2424 - segunda e quarta semanal  <br>  <br>2452 - segunda quarta e quinta semanal  <br>  <br>2525 - segunda e quinta semanal  <br>  <br>2562 - segunda quinta sexta semanal  <br>  <br>2626 - segunda e sexta semanal  <br>  <br>3000 - terca-feira mensal  <br>  <br>3030 - terca-feira quinzenal  <br>  <br>3333 - terca-feira semanal  <br>  <br>3434 - terca e quarta semanal  <br>  <br>3456- terca quarta quinta e sexta semanal  <br>  <br>3535 - terca e quinta semanal  <br>  <br>3636 - terca e sexta semanal  <br>  <br>4000 - quarta-feira mensal  <br>  <br>4040 - quarta-feira quinzenal  <br>  <br>4444- quarta-feira semanal  <br>  <br>4545 - quarta e quinta semanal  <br>  <br>4646 - quarta e sexta semanal  <br>  <br>5000 - quinta-feira mensal  <br>  <br>5050 - quinta-feira quinzenal  <br>  <br>5555 - quintal feira semanal  <br>  <br>6000 - sexta-feira mensal  <br>  <br>6060 - sexta-feira quinzenal  <br>  <br>6666 - sexta feira semanal |\n| Canal | Canal__c | Lista de opções:  <br>  <br>Direto  <br>  <br>Exportação  <br>  <br>Food  <br>  <br>Indireto  <br>  <br>Outros Segmentos |\n| Chave Data.com | Jigsaw | Texto |\n| Classificação | Rating | Lista de opções:  <br>  <br>Hot  <br>  <br>Warm  <br>  <br>Cold |\n| CNPJ | CNPJ__c | Texto |\n| Condição de pagamento | Condicao_pagamento__c | Lista de opções:  <br>  <br>1,28,10,20,30  <br>  <br>1PARC 30 DIAS  <br>  <br>1 PARCELA  <br>  <br>28,01,07,15,2  <br>  <br>14DIAS  <br>  <br>1P 35D 7PGTO  <br>  <br>1P 40 PGT QUINT  <br>  <br>1P 55D 1,10,20  <br>  <br>21 DIAS  <br>  <br>28 DIAS  <br>  <br>3 DIAS  <br>  <br>30D - 01/10/2020  <br>  <br>30 DIAS  <br>  <br>32 DIAS  <br>  <br>35 DIAS  <br>  <br>40 DIAS  <br>  <br>45 DIAS  <br>  <br>45D 10,20,30  <br>  <br>55 DIAS  <br>  <br>55 DIAS QUINTA  <br>  <br>60 DIAS  <br>  <br>7 DIAS  <br>  <br>84DDL  <br>  <br>A VISTA  <br>  <br>ASSAI 35 DIAS  <br>  <br>GPA57D-01  <br>  <br>REMESSA |\n| Conta pai | ParentId | Hierarquia |\n| Contrato (%) | Contrato__c | Texto |\n| Código do vendedor | Codigo_vendedor__c | Texto |\n| Código Integração | Codigo_Integracao__c | Texto |\n| Código SIC | Sic | Texto |\n| Descrição | Description | Texto Longo (32 000 caracteres) |\n| Descrição SIC | SicDesc | Texto(80 caracteres) |\n| Email NFE | Email_NFE__c | Email |\n| Endereço de cobrança | BillingAddress | Endereço |\n| Endereço de entrega | ShippingAddress | Endereço |\n| Expectativa de venda | Expectativa_venda__c | Moeda |\n| Funcionários | NumberOfEmployees | Número |\n| Horário recebimento | Horario_recebimento__c | Texto(255 caracteres) |\n| Inscrição Estadual | Inscricao_Estadual__c | Texto(20 caracteres) |\n| Limite de Crédito | Limite_Credito__c | Moeda |\n| Local da conta | Site | Texto(80 caracteres) |\n| Loja com promotor? | Loja_com_promotor__c | Boolean |\n| Nome da conta | Name | Nome |\n| Nome fantasia | Nome_fantasia__c | Texto(255 caracteres) |\n| Observação Geral | Observacao_Geral__c | Texto(255 caracteres) |\n| Quantidade de checkouts | Quantidade_checkouts__c | Número |\n| Ramo | Ramo__c | Lista de opções:  <br>  <br>Atacado  <br>  <br>Indústrias  <br>  <br>Cash and carry  <br>  <br>Contas regionais FS  <br>  <br>Distribuidor  <br>  <br>Contas globais FS  <br>  <br>Buffet  <br>  <br>Cafeterias  <br>  <br>Cantinas/faculdades/conveniências  <br>  <br>Fast Food  <br>  <br>Hamburguerias  <br>  <br>Hotéis  <br>  <br>Lanchonetes  <br>  <br>Padarias  <br>  <br>Pizzaria  <br>  <br>Restaurantes  <br>  <br>Temakerias  <br>  <br>Distribuidor Food Service / FS  <br>  <br>Distribuidor varejo  <br>  <br>Key Account  <br>  <br>Regional Key Account  <br>  <br>Varejo |\n| Ramo Interno | Industry | Lista de opções:  <br>  <br>Atacado  <br>  <br>Buffet  <br>  <br>Cafeterias  <br>  <br>Cantinas/faculdades/conveniências  <br>  <br>Contas regionais FS  <br>  <br>Distribuidor Food Service / FS  <br>  <br>Distribuidor varejo  <br>  <br>Fast Food  <br>  <br>Hamburguerias  <br>  <br>Hotéis  <br>  <br>Indústrias  <br>  <br>Key Account  <br>  <br>Lanchonetes  <br>  <br>Padarias  <br>  <br>Pizzaria  <br>  <br>Regional Key Account  <br>  <br>Restaurantes  <br>  <br>Temakerias  <br>  <br>Varejo  <br>  <br>Varejo 1 a 4 Check Out  <br>  <br>Varejo +10 Check Out  <br>  <br>Varejo 5 a 9 Check Out  <br>  <br>Casa de Frios e Laticinios  <br>  <br>Pequeno Supermercado  <br>  <br>Mercearia/ Mini Mercados  <br>  <br>Supermercados/Hipermercado  <br>  <br>Emporios  <br>  <br>Padarias e Confeitarias  <br>  <br>Operador Logistico  <br>  <br>Catering  <br>  <br>Bar  <br>  <br>Rotisseria  <br>  <br>Medio Varejo  <br>  <br>Marketing Place  <br>  <br>Distribuidor Atacadista  <br>  <br>Lojas Condominio  <br>  <br>Cash Regional  <br>  <br>Cash Nacional  <br>  <br>Pequenos Atacadistas  <br>  <br>Outros |\n| Reativação | Reativacao__c | Boolean |\n| Receita anual | AnnualRevenue | Moeda |\n| Rede | Rede__c | Texto(255 caracteres) |\n| Site da Web | Website | URL(255 caracteres) |\n| Status | Status__c | Lista de opções:  <br>  <br>Ativo  <br>  <br>Inativo  <br>  <br>Suspenso  <br>  <br>Em análise  <br>  <br>Em análise – Financeiro  <br>  <br>Em análise – Fiscal  <br>  <br>Em análise – Logística |\n| Sub Canal | Sub_Canal__c | Lista de opções:  <br>  <br>ATACADO  <br>  <br>B2B  <br>  <br>CASH NACIONAL  <br>  <br>CASH REGIONAL  <br>  <br>CLIENTES ESPECIAIS FS  <br>  <br>CONDOMINIO  <br>  <br>DISTRIBUIDOR  <br>  <br>DISTRIBUIDOR ATACADISTA  <br>  <br>DISTRIBUIDOR FOOD  <br>  <br>EXPORTACAO  <br>  <br>FOOD BRONZE  <br>  <br>KEY ACCOUNT  <br>  <br>MEDIO VAREJO  <br>  <br>OUTROS SEGMENTOS  <br>  <br>REGIONAL KEY ACCOUNT  <br>  <br>ROTA FS  <br>  <br>VAREJO |\n| Tipo de Comunicação | Tipo_Comunicacao__c | Lista de opções (seleção multipla):  <br>  <br>E-mail  <br>  <br>Whatsapp  <br>  <br>Telefone |\n| Tipo de público | Tipo_publico__c | Lista de opções (seleção multipla):  <br>  <br>A  <br>  <br>B  <br>  <br>C  <br>  <br>D  <br>  <br>E |\n| Volume de Compra (kg) | Volume_de_Compra_kg__c | Número |\n| Volume de compra (R$) | Volume_de_compra_RS__c | Moeda |\n\n**OBS: Ao enviar a requisição com o nome dos campos, sempre utilizar o API_NAME. Por exemplo CNPJ, deve ser enviado como CNPJ__c.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Access Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"pm.environment.set(\"access_token\", jsonData[\"access_token\"]);\r",
+							"pm.environment.set(\"authorization\", \"Bearer \"+jsonData[\"access_token\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{domain}}.my.salesforce.com/services/oauth2/token?grant_type=password&client_id={{client_id}}&client_secret={{client_secret}}&username={{username}}&password={{password}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

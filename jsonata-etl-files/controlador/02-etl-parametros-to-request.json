@@ -1,0 +1,23 @@
+{
+    "result": {
+        "LastRun": [
+            {
+                "Code": "8d25904d-57f2-4d15-a33c-827076f2f665",
+                "Name": "8d25904d-57f2-4d15-a33c-827076f2f665",
+                "U_TgtObj": "Products",
+                "U_SrcObj": "OITM",
+                "U_LastRun": "2023-07-21_16:07:40",
+                "U_Status": "S",
+                "U_Summary": "Integração Z"
+            }
+        ],
+        "SrcParams": {
+            "SrcObjt": "OITM",
+            "TgtObj": "Products",
+            "SrcRequest": {
+                "path": "Items",
+                "query": "__INTEGRA_DOLLAR_REPLACEMENT__select=ItemCode,ItemName,UpdateDate,UpdateTime&__INTEGRA_DOLLAR_REPLACEMENT__orderby=UpdateDate,UpdateTime&__INTEGRA_DOLLAR_REPLACEMENT__filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+            }
+        }
+    }
+}
