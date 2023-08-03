@@ -1,0 +1,312 @@
+[
+    {
+        "module_id": "parameters",
+        "name": "flow Parameters",
+        "information": "flow parameters definition",
+        "type": "parameters",
+        "subtype": "flow",
+        "operation": "none",
+        "description": "flow parameters definition",
+        "parameters": [
+            {
+                "name": "SourceObject",
+                "id": "[]yU2quz7G : SourceObject[/]",
+                "type": "string",
+                "description": "SourceObject",
+                "sample": "OITM"
+            }
+        ],
+        "next": []
+    },
+    {
+        "module_id": "JXYvQ9pq",
+        "name": "FLOW_CALL_TRIGGER",
+        "information": "Recebe os dados de uma chamada de outro fluxo.",
+        "type": "trigger",
+        "subtype": "flow",
+        "operation": "flow_call",
+        "description": "Trigger flow_call for flow J8gIEAfG",
+        "parameters": [
+            {
+                "name": "identifier",
+                "value": "GetLastRun"
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "5YjefMhk"
+            }
+        ]
+    },
+    {
+        "module_id": "Ls4HGB5g",
+        "name": "Data Transformation",
+        "information": "Contém a parametrização dos objetos sincronizados",
+        "type": "tool",
+        "subtype": "transform",
+        "operation": "Transformation",
+        "description": "Módulo para fazer transformação de dados",
+        "parameters": [
+            {
+                "name": "jsonata",
+                "value": "$filter($.result.DataIntegrations, function($v, $i, $a) {\r\n  $v.SrcObjt = $.result.SourceObject\r\n})"
+            },
+            {
+                "name": "data",
+                "value": " {\r\n\t\t\"SourceObject\": \"[]yU2quz7G : SourceObject[/]\",\r\n\t\t\"DataIntegrations\": [\r\n\t\t\t{\r\n\t\t\t\t\"SrcObjt\": \"OITM\",\r\n\t\t\t\t\"TgtObj\": \"Products\",\r\n\t\t\t\t\"SrcRequest\": {\r\n\t\t\t\t    \"path\": \"Items\",\r\n\t\t\t\t    \"query\":\"$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'\"\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"SrcObjt\": \"OCRD\",\r\n\t\t\t\t\"TgtObj\": \"Customers\",\r\n\t\t\t\t\"SrcRequest\": {\r\n\t\t\t\t    \"path\": \"\",\r\n\t\t\t\t    \"query\":\"\"\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t]\r\n\t}"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "draggable_data"
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "Quartgis"
+            }
+        ]
+    },
+    {
+        "module_id": "5YjefMhk",
+        "name": "Update Params",
+        "information": "Parametrização dos objetos integrados:\n",
+        "type": "tool",
+        "subtype": "UPDATE_PARAMS",
+        "operation": "Update Flow Params",
+        "description": "Realiza a atualizaçao de parametros do fluxo",
+        "parameters": [
+            {
+                "name": "[]yU2quz7G : SourceObject[/]",
+                "value": "[]yU2quz7G : SourceObject[/]"
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "Ls4HGB5g"
+            }
+        ]
+    },
+    {
+        "module_id": "Quartgis",
+        "name": "BusinessOne Service Layer",
+        "information": "SAP BusinessOne Service Layer\n/b1s/v2",
+        "type": "connector",
+        "subtype": "REST",
+        "operation": "GET",
+        "description": "SAP BusinessOne Service Layer\n/b1s/v2",
+        "parameters": [
+            {
+                "name": "path",
+                "value": "U_INO_MDIC"
+            },
+            {
+                "name": "query",
+                "smop": {
+                    "operation": "\"$filter=U_SrcObj eq '\" & $.param1.SrcObjt & \"' and U_Status eq 'S'&$orderby=U_LastRun desc\"",
+                    "param1": "{}Ls4HGB5g : data{/}"
+                }
+            },
+            {
+                "name": "odataMaxPageSize",
+                "value": "odata.maxpagesize=1"
+            }
+        ],
+        "origin": "C7JAkCkb",
+        "next": [
+            {
+                "type": "single",
+                "id": "xjOuVwnv"
+            }
+        ]
+    },
+    {
+        "module_id": "xjOuVwnv",
+        "name": "Data Transformation",
+        "information": "Módulo para fazer transformação de dados",
+        "type": "tool",
+        "subtype": "transform",
+        "operation": "Transformation",
+        "description": "Módulo para fazer transformação de dados",
+        "parameters": [
+            {
+                "name": "jsonata",
+                "value": "(\r\n    $toQuery:= function($n){ \r\n        $n ~> \r\n        $string() ~> \r\n        $replace(\"{{updateDate}}\", $split($.result.LastRun[0].U_LastRun,\"_\")[0]) ~>\r\n        $replace(\"{{updateTime}}\", $split($.result.LastRun[0].U_LastRun,\"_\")[1]) ~>\r\n        $replace(\"__INTEGRA_DOLLAR_REPLACEMENT__\",\"$\")\r\n    };\r\n    \r\n    {\r\n        \"path\": $.result.SrcParams.SrcRequest.path,\r\n        \"query\": $toQuery($.result.SrcParams.SrcRequest.query),\r\n        \"maxPageSize\":\"odata.maxpagesize=9999\"\r\n    }\r\n)\r\n"
+            },
+            {
+                "name": "data",
+                "value": "{\n    \"LastRun\": {}Quartgis : value{/},\n    \"SrcParams\": {}Ls4HGB5g : data{/}\n    \n}"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "draggable_data"
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "UjLBTeXr"
+            }
+        ]
+    },
+    {
+        "module_id": "UjLBTeXr",
+        "name": "BusinessOne Service Layer",
+        "information": "SAP BusinessOne Service Layer\n/b1s/v2",
+        "type": "connector",
+        "subtype": "REST",
+        "operation": "GET",
+        "description": "SAP BusinessOne Service Layer\n/b1s/v2",
+        "parameters": [
+            {
+                "name": "path",
+                "smop": {
+                    "operation": "$.param1.path",
+                    "param1": "{}xjOuVwnv : data{/}"
+                }
+            },
+            {
+                "name": "query",
+                "smop": {
+                    "operation": "$.param1.query",
+                    "param1": "{}xjOuVwnv : data{/}"
+                }
+            },
+            {
+                "name": "odataMaxPageSize",
+                "smop": {
+                    "operation": "$.param1.maxPageSize",
+                    "param1": "{}xjOuVwnv : data{/}"
+                }
+            }
+        ],
+        "origin": "C7JAkCkb",
+        "next": [
+            {
+                "type": "single",
+                "id": "1kFydvLQ"
+            }
+        ]
+    },
+    {
+        "module_id": "1kFydvLQ",
+        "name": "For",
+        "information": "Executa um loop com base em uma lista",
+        "type": "tool",
+        "subtype": "for",
+        "operation": "start",
+        "description": "Executa um loop com base em uma lista",
+        "parameters": [
+            {
+                "name": "loopCounter",
+                "value": "{}1kFydvLQ : loopCounter{/}"
+            },
+            {
+                "name": "forEndId",
+                "value": "A7c0ZeMS"
+            },
+            {
+                "name": "restartLoopCounter",
+                "value": "{}A7c0ZeMS : restartLoopCounter{/}"
+            },
+            {
+                "name": "array",
+                "value": "{}UjLBTeXr : value{/}"
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "ZCV2RzZl"
+            }
+        ]
+    },
+    {
+        "module_id": "ZCV2RzZl",
+        "name": "Flow call",
+        "information": "Executa um outro fluxo.",
+        "type": "tool",
+        "subtype": "FLOW_CALL_SENDER",
+        "operation": "Executar um fluxo",
+        "description": "Executa um outro fluxo.",
+        "parameters": [
+            {
+                "name": "data",
+                "value": ""
+            },
+            {
+                "name": "TargetObject",
+                "value": ""
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "A7c0ZeMS"
+            }
+        ]
+    },
+    {
+        "module_id": "A7c0ZeMS",
+        "name": "For",
+        "information": "Executa um loop com base em uma lista",
+        "type": "tool",
+        "subtype": "for",
+        "operation": "end",
+        "description": "Executa um loop com base em uma lista",
+        "parameters": [
+            {
+                "name": "forBeginId",
+                "value": "1kFydvLQ"
+            },
+            {
+                "name": "arrayLength",
+                "value": "{}1kFydvLQ : arrayLength{/}"
+            },
+            {
+                "name": "loopCounter",
+                "value": "{}1kFydvLQ : loopCounter{/}"
+            }
+        ],
+        "origin": "none",
+        "next": []
+    },
+    {
+        "module_id": "kvuFDEcw",
+        "name": "TIME_TRIGGER",
+        "information": "TIME_TRIGGER_DESC",
+        "type": "trigger",
+        "subtype": "timer",
+        "operation": "once",
+        "description": "Trigger once for flow J8gIEAfG",
+        "parameters": [
+            {
+                "name": "date",
+                "value": "Thu Aug 03 2023 10:00:33 GMT-0300"
+            },
+            {
+                "name": "time",
+                "value": ""
+            }
+        ],
+        "origin": "none",
+        "next": [
+            {
+                "type": "single",
+                "id": "5YjefMhk"
+            }
+        ]
+    }
+]
