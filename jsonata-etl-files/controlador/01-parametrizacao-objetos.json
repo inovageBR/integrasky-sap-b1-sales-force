@@ -1,21 +1,23 @@
 {
-    "SourceObject": "OITM",
-    "DataIntegrations": [
-        {
-            "SrcObjt": "OITM",
-            "TgtObj": "Products",
-            "SrcRequest": {
-                "path": "Items",
-                "query": "$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+    "result": {
+        "SourceObject": "OITM",
+        "DataIntegrations": [
+            {
+                "SrcObjt": "OITM",
+                "TgtObj": "Products",
+                "SrcRequest": {
+                    "path": "Items",
+                    "query": "$select=ItemCode,ItemName,UpdateDate,UpdateTime&$orderby=UpdateDate,UpdateTime&$filter=UpdateDate ge '{{updateDate}}' and UpdateTime ge '{{updateTime}}'"
+                }
+            },
+            {
+                "SrcObjt": "OCRD",
+                "TgtObj": "Customers",
+                "SrcRequest": {
+                    "path": "",
+                    "query": ""
+                }
             }
-        },
-        {
-            "SrcObjt": "OCRD",
-            "TgtObj": "Customers",
-            "SrcRequest": {
-                "path": "",
-                "query": ""
-            }
-        }
-    ]
+        ]
+    }
 }
